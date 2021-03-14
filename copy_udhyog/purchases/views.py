@@ -26,7 +26,7 @@ def purchases_list(request):
     def total_price():
         price = 0
         for purchase in purchases:
-            price += float(purchase.price)
+            price += float(purchase.actual_price())
 
         return price
 

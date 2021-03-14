@@ -4,8 +4,12 @@
 {% endblock %}
 {% block content %}
 
-<h2>Are you sure you want to Delete {{purchase.title}}</h2>
-<form action="" method="POST"> {% csrf_token %}
-    <button type="submit">Delete</button>
-</form>
+<div class="container sufficient_content_height text-center" style="flex-direction: column; text-align: center;">
+    <h2>Are you sure you want to Delete {{purchase.title}}</h2>
+    <form action="" method="POST"> {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Yes Delete</button>
+    </form>
+    <a href="/purchases/list" class="btn btn-secondary w-25">No Don't</a>
+
+</div>
 {% endblock %}
