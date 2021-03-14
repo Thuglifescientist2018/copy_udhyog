@@ -1,0 +1,16 @@
+{% extends 'base.html' %} 
+{% block head %}
+<title>बिक्री गरेको सामानको लिस्ट  </title>
+
+{% endblock %}
+
+{% block content %}
+<h1 class="m-3"> बिक्री गरेको सामानको लिस्ट  </h1>
+
+{% for sale in sales %}
+<div class="container">
+    {% include 'list-inline.html' with sales=sale truncate=True %}
+
+</div>
+{% endfor %}
+{% endblock %}

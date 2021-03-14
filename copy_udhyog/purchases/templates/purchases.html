@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block head %}
+<title>Purchases</title>
+<style>
+    
+</style>
+{% load static %}
+<link rel="stylesheet" href="{% static 'purchases_home/purchases_home.css' %}">
+{% endblock %}
+{% block content %}
+
+<h1 class="p-3">खरिद गरेको सामान्को जानकारी दिनुहोश </h1>
+<a class="btn btn-secondary ml-3 block" href="/purchases/list">खरिद गरेको सामान्को लिस्ट </a>
+<section id="purchases_content" class="sufficient_content_height">
+    <div class="container">
+        <form class="itemform" method="POST"> {% csrf_token %}
+         {% block form %}
+                {{form1.as_p}}
+
+        {% endblock %}
+           
+            <br>
+            <div>
+                {% block edit_button %}
+                <button class="btn btn-dark" type="submit">Add Product</button>
+                {% endblock %}
+            </div>
+        </form>
+    
+
+    </div>
+
+</section>
+
+{% endblock %}

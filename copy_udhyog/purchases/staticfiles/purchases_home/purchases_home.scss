@@ -1,0 +1,30 @@
+#purchases_content {
+  color: black;
+  min-height: 85vh;
+  padding: 20px 0;
+
+  .container {
+    form {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    p {
+      margin: 0 5px;
+
+      label {
+        display: block;
+        text-align: center;
+        margin-right: 40%;
+        font-size: 1.3rem;
+      }
+
+      input {
+        padding: 1rem;
+        outline: none;
+        min-width: 15vw;
+      }
+    }
+  }
+}
