@@ -16,3 +16,7 @@ class Sales(models.Model):
         self.slug = slugify(self.product_name)
 
         super(Sales, self).save(*args, **kwargs)
+
+    def actual_price(self, *args, **kwargs):
+        actual_price = float(self.price) * float(self.quantity)
+        return actual_price

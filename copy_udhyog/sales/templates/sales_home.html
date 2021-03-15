@@ -15,12 +15,15 @@
 <section id="purchases_content" class="sufficient_content_height">
     <div class="container">
         <form class="itemform" method="POST"> {% csrf_token %}
-         
+                {% block form %}
                 {{form1.as_p}}
+                {% endblock %}
            
             <br>
             <div>
+                {% block edit_button %}
                 <button class="btn btn-dark" type="submit">Add Product</button>
+                {% endblock %}
 
             </div>
         </form>

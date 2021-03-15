@@ -5,11 +5,11 @@
 {% block content %}
 
 <div class="container sufficient_content_height text-center" style="flex-direction: column; text-align: center;">
-    <h2>Are you sure you want to Delete {{purchase.title}}</h2>
+    <h2>साँचिकै डिलिट गर्ने ? "{{purchase.product_name}}"</h2>
     <form action="" method="POST"> {% csrf_token %}
-        <button type="submit" class="btn btn-danger">Yes Delete</button>
+        <button type="submit" style="font-size: 2rem" class="btn btn-danger">गर्ने 👍 </button>
     </form>
-    <a href="/purchases/list" class="btn btn-secondary w-25">No Don't</a>
+    <a href="/purchases/list" style="font-size: 2rem" class="btn btn-secondary w-25">होश🤚 नगरने!! </a>
 
 </div>
 {% endblock %}

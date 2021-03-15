@@ -1,16 +1,25 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
+
 {% block head %}
-<title>बिक्री गरेको सामानको लिस्ट  </title>
-
+<title> किनेको सामान्को  जानकारी हेर्नुहोश </title>
 {% endblock %}
-
 {% block content %}
-<h1 class="m-3"> बिक्री गरेको सामानको लिस्ट  </h1>
-
-{% for sale in sales %}
+<div id="purchases_list" class="sufficient_content_height">
 <div class="container">
-    {% include 'list-inline.html' with sales=sale truncate=True %}
+        <h1>बिक्री  गरेको सामानहरु </h1>
+        <p>जम्मा सामानहरु: {{sales.count}}</p>
+        <p>जम्मा  मुल्य: {{total_price}}</p>
+
+        <ul>
+            {% for sales in sales %}
+            {% include 'list-inline_sale.html' with purchase=purchase detail=True %}
+    
+            {% endfor %}
+        
+        </ul>
+
+    </div>
 
 </div>
-{% endfor %}
+
 {% endblock %}
