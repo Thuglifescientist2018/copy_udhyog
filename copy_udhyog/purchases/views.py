@@ -11,6 +11,7 @@ def purchases_home(request):
     purchasesForm1 = PurchasesModelForm(request.POST or None)
     if purchasesForm1.is_valid():
         purchasesForm1.save()
+        purchasesForm1 = PurchasesModelForm()
 
     context = {
         "form1": purchasesForm1,

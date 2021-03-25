@@ -4,5 +4,12 @@
 {% endblock %}
 {% block content %}
 
-<h1>Are you sure you want to delete?</h1>
+<div class="container sufficient_content_height text-center" style="flex-direction: column; text-align: center;">
+    <h2>साँचिकै डिलिट गर्ने ? "{{sale.product_name}}"</h2>
+    <form action="" method="POST"> {% csrf_token %}
+        <button type="submit" style="font-size: 2rem" class="btn btn-danger">गर्ने 👍 </button>
+    </form>
+    <a href="/sales/list" style="font-size: 2rem" class="btn btn-secondary w-25">होश🤚 नगरने!! </a>
+
+</div>
 {% endblock %}
