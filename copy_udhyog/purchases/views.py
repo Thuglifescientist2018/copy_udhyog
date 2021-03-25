@@ -7,7 +7,7 @@ from django import forms
 
 
 def purchases_home(request):
-
+    print("list url: ", request.path)
     purchasesForm1 = PurchasesModelForm(request.POST or None)
     if purchasesForm1.is_valid():
         purchasesForm1.save()
