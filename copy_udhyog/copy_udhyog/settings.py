@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'e87cjoegkm4z4tgl(+jtq^63inw4o4tjns4=(6sh=hvi$01cgc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 
@@ -37,8 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'api.apps.ApiConfig',
     'purchases',
-    'sales'
+    'sales',
 ]
 
 MIDDLEWARE = [
@@ -49,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'copy_udhyog.urls'
@@ -68,6 +71,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'copy_udhyog.wsgi.application'
 
@@ -121,7 +125,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+LOCAL_STATIC_CDN_PATH = os.path.join(
+    os.path.dirname(BASE_DIR), 'local_static_cdn')
+STATIC_ROOT = os.path.join(LOCAL_STATIC_CDN_PATH, 'static')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'staticfiles'), os.path.join(
         BASE_DIR, 'purchases/staticfiles')
 ]
+
+MEDIA_ROOT = os.path.join(LOCAL_STATIC_CDN_PATH, 'media')
+MEDIA_URL = '/media/'

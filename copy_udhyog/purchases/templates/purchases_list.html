@@ -8,9 +8,9 @@
 <div class="container">
         <h1>खरिद गरेको सामानहरु </h1>
         <p>जम्मा सामानहरु: {{purchases.count}}</p>
-        <p>जम्मा  मुल्य: {{total_price}}</p>
+        <p>जम्मा  मुल्य: रु. {{total_price}}</p>
 
-        <ul>
+        <ul style="height: 500px; overflow-y: scroll">
             {% for purchase in purchases %}
             {% include 'list_inline_purchase.html' with purchase=purchase detail=True %}
     
