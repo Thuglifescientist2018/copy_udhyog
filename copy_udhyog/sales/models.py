@@ -11,6 +11,7 @@ class Sales(models.Model):
     slug = models.SlugField(max_length=255, blank=False,
                             null=False, unique=True)
     sold_to = models.CharField(max_length=255, blank=False, null=True)
+    date = models.DateField(auto_now=False, blank=True, null=True)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.product_name)

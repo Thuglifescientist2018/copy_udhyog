@@ -9,9 +9,10 @@ class SalesModelForm(forms.ModelForm):
             'product_name': 'सामान को नाम',
             'price': 'बेचेको दाम',
             'quantity': 'कती वटा?',
-            'sold_to': 'कता बेचेको?'
+            'sold_to': 'कता बेचेको?',
+            "date": "मिती",
         }
-        fields = ["product_name", "price", "quantity", "sold_to"]
+        fields = ["product_name", "price", "quantity", "sold_to", "date"]
 
     def clean_product_name(self, *args, **kwargs):
         instance = self.instance

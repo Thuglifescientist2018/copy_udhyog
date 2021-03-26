@@ -12,7 +12,7 @@
 
         <ul style="height: 700px; overflow-y: scroll">
             {% for sales in sales %}
-            {% include 'list-inline_sale.html' with purchase=purchase detail=True %}
+            {% include 'list-inline_sale.html' with purchase=purchase detail=True publish_date={{sales.date}} %}
     
             {% endfor %}
         

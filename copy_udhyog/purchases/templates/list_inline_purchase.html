@@ -20,9 +20,16 @@
                    एउटाको Price: रु. {{purchase.price | floatformat:2}}
 
                </div>
+               
                <br>
                <a href="/purchases/delete/{{purchase.slug}}" class="btn btn-danger">Delete</a>
                <a href="/purchases/edit/{{purchase.slug}}" class="btn btn-secondary">Edit</a>
+
+               {% if not publish_date %}
+`                   <p>Item  not publised </p>
+                {% else %}
+                    <p>Published on: {{ publish_date | date:"Y-m-d" }}</p>
+               {% endif %}
             </p>
           
         </div>
