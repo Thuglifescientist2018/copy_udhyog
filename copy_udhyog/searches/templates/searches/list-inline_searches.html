@@ -11,25 +11,25 @@
             {% endif %}
             {% endif %}
            
-            <h5 class="card-title">{{ sale.product_name }}</h5>
+            <h5 class="card-title">{{ purchase.product_name }}</h5>
             <p class="card-text"> 
-               {{sale.sold_to}} मा बेचेको  
+               {{purchase_list.product_name}} 
                <div>
-                   {{sale.quantity}} वटाको 
+                   {{purchase_list.quantity}} वटाको 
                    Price: रु. 
                 
-                   {{sale.actual_price}}
+                   {{purchase_list.actual_price}}
                    <br>
                    
-                   एउटाको Price: रु. {{sale.price | floatformat:2}}
+                   एउटाको Price: रु. {{purchase.price | floatformat:2}}
 
                </div>
                
                 
                  <p>Published on: {{ publish_date | date:"Y-m-d" }}</p>
                
-               <a href="/sales/delete/{{sale.slug}}" class="btn btn-danger">Delete</a>
-               <a href="/sales/edit/{{sale.slug}}" class="btn btn-secondary">Edit</a>
+               <a href="/purchases/delete/{{purchase.slug}}" class="btn btn-danger">Delete</a>
+               <a href="/purchases/edit/{{purchase.slug}}" class="btn btn-secondary">Edit</a>
 
                
             </p>
@@ -48,24 +48,24 @@
                 {% endif %}
                 {% endif %}
                
-                <h5 class="card-title">{{ sale.product_name }}</h5>
+                <h5 class="card-title">{{ purchase.product_name }}</h5>
                 <p class="card-text"> 
-                   {{sale.sold_to}} मा बेचेको   
+                   <h4>{{purchase_list.product_name}} </h4>
                    <div>
-                       {{sale.quantity}} वटाको 
+                       {{purchase_list.quantity}} वटाको 
                        Price: रु. 
                     
-                       {{sale.actual_price}}
+                       {{purchase_list.actual_price}}
                        <br>
                        
-                       एउटाको Price: रु. {{sale.price | floatformat:2}}
+                       एउटाको Price: रु. {{purchase_list.price | floatformat:2}}
     
                    </div>
                    <p>Draft (Not Published) </p>
                    
                   
-                   <a href="/sales/delete/{{sale.slug}}" class="btn btn-danger">Delete</a>
-                   <a href="/sales/edit/{{sale.slug}}" class="btn btn-secondary">Edit</a>
+                   <a href="/purchases/delete/{{product_list.slug}}" class="btn btn-danger">Delete</a>
+                   <a href="/purchases/edit/{{product_list.slug}}" class="btn btn-secondary">Edit</a>
     
                    
                 </p>

@@ -1,5 +1,9 @@
+
+
+
+{% if publish_date %}
 <div class="col-12 col-md-10 mb-3 mx-auto">
-    <div class="card {% if not blog_post.publish_date %} border border-warning {% endif %}">
+    <div class="card {% if not blog_post.publish_date %} border border-success {% endif %}">
         <div class="card-body">
             {% if not truncate %}
             {% if blog_post.image %}
@@ -9,11 +13,11 @@
            
             <h5 class="card-title">{{ purchase.product_name }}</h5>
             <p class="card-text"> 
-               {{purchase.bought_from}}
+               {{purchase.bought_from}} बाट किनेको 
                <div>
                    {{purchase.quantity}} वटाको 
                    Price: रु. 
-                   <!-- {% widthratio purchase.price 1 purchase.quantity %} (one way to do it)-->
+                
                    {{purchase.actual_price}}
                    <br>
                    
@@ -21,18 +25,54 @@
 
                </div>
                
-               <br>
+                
+                 <p>Published on: {{ publish_date | date:"Y-m-d" }}</p>
+               
                <a href="/purchases/delete/{{purchase.slug}}" class="btn btn-danger">Delete</a>
                <a href="/purchases/edit/{{purchase.slug}}" class="btn btn-secondary">Edit</a>
 
-               {% if not publish_date %}
-`                   <p>Item  not publised </p>
-                {% else %}
-                    <p>Published on: {{ publish_date | date:"Y-m-d" }}</p>
-               {% endif %}
+               
             </p>
           
         </div>
     </div>
 
 </div>
+    {% elif not publish_date %}
+    <div class="col-12 col-md-10 mb-3 mx-auto">
+        <div class="card {% if not blog_post.publish_date %} border border-warning {% endif %}">
+            <div class="card-body">
+                {% if not truncate %}
+                {% if blog_post.image %}
+                    <img src="{{ blog_post.image.url }}" class="card-img-top"/>
+                {% endif %}
+                {% endif %}
+               
+                <h5 class="card-title">{{ purchase.product_name }}</h5>
+                <p class="card-text"> 
+                   {{purchase.bought_from}} बाट किनेको 
+                   <div>
+                       {{purchase.quantity}} वटाको 
+                       Price: रु. 
+                    
+                       {{purchase.actual_price}}
+                       <br>
+                       
+                       एउटाको Price: रु. {{purchase.price | floatformat:2}}
+    
+                   </div>
+                   <p>Draft (Not Published) </p>
+                   
+                  
+                   <a href="/purchases/delete/{{purchase.slug}}" class="btn btn-danger">Delete</a>
+                   <a href="/purchases/edit/{{purchase.slug}}" class="btn btn-secondary">Edit</a>
+    
+                   
+                </p>
+              
+            </div>
+        </div>
+    
+    </div>
+    {% endif %}
+

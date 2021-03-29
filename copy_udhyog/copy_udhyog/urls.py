@@ -17,6 +17,7 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
 from .views import home_page
+from searches.views import search_view
 
 
 urlpatterns = [
@@ -24,6 +25,7 @@ urlpatterns = [
     path('purchases/', include('purchases.urls')),
     path('sales/', include('sales.urls')),
     path('api/', include('api.urls')),
+    path('search/', search_view),
     path('admin/', admin.site.urls),
 ]
 

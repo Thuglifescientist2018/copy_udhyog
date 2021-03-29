@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<title> किनेको सामान्को  जानकारी हेर्नुहोश </title>
+<title> बिकेको  सामान्को  जानकारी हेर्नुहोश </title>
 {% endblock %}
 {% block content %}
-<div id="purchases_list" class="sufficient_content_height">
+<div id="sales_list" class="sufficient_content_height">
 <div class="container">
         <h1>बिक्री  गरेको सामानहरु </h1>
         <p>जम्मा सामानहरु: {{sales.count}}</p>
         <p>जम्मा  मुल्य: रु. {{total_price}}</p>
 
-        <ul style="height: 700px; overflow-y: scroll">
-            {% for sales in sales %}
-            {% include 'list-inline_sale.html' with purchase=purchase detail=True publish_date={{sales.date}} %}
+        <ul style="height: 500px; overflow-y: scroll">
+            {% for sale in sales %}
+            {% include 'list-inline_sale.html' with sale=sale publish_date=sale.date detail=True %}
     
             {% endfor %}
         

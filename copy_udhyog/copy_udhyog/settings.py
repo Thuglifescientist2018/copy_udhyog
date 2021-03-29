@@ -39,11 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+
     'rest_framework',
     'corsheaders',
     'api.apps.ApiConfig',
     'purchases.apps.PurchasesConfig',
     'sales.apps.SalesConfig',
+    'searches.apps.SearchesConfig'
 
 
 ]

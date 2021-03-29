@@ -28,6 +28,7 @@ def sales_list(request):
             price += float(sale.actual_price())
 
         return price
+
     context = {
         "sales": sales,
         "total_price": total_price()

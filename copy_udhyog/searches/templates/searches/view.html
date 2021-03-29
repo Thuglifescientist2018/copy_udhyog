@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+  body {
+    overflow-x: hidden;
+  }
+</style>
+<div class="row p-3">
+  <div class="container">
+    <div class="col-12 col-8 mx-auto">
+      <a href="/search/" class="btn btn-primary">Search page</a>
+        {% if query %}
+        <p class="lead">You searched for <q>{{ query }}</q> </p>
+        {% else %}
+        <form class="form-inline my-2 my-lg-0" action="/search/">
+            <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        {% endif %}
+        {% for purchase_list in purchases_list %}
+          
+        {% include 'searches/list-inline_searches.html' with purchase_list=purchase_list  %}
+          {% endfor %}
+        {% endblock %}
+    </div>
+
+  </div>
+</div>
