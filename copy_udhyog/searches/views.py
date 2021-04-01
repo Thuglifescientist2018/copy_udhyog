@@ -5,6 +5,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from purchases.models import Purchases
+from sales.models import Sales
 from .models import SearchQuery
 
 
@@ -17,6 +18,9 @@ def search_view(request):
     if query is not None:
         SearchQuery.objects.create(user=user, query=query)
         purchases_list = Purchases.objects.search(query=query)
+        sales_list = Sales.objects.search(query=query)
+
         context['purchases_list'] = purchases_list
-        print(purchases_list)
+        context['sales_list'] = sales_list
+        print(sales_list)
     return render(request, 'searches/view.html', context)

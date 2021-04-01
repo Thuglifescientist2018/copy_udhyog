@@ -31,6 +31,16 @@ def purchases_list(request):
 
         return price
 
+    more = 0
+
+    def load_and_more():
+            
+        purchases2 = purchases[:2]
+        for purchase in purchases2:
+            print(purchase.id, purchase.product_name)
+
+    load_and_more()
+
     context = {
         "purchases": purchases,
         "total_price": total_price(),

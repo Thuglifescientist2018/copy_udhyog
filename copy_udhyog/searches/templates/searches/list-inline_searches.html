@@ -1,46 +1,8 @@
 
+{% if purchase_list.product_name %}
 
-
-{% if publish_date %}
-<div class="col-12 col-md-10 mb-3 mx-auto">
-    <div class="card {% if not blog_post.publish_date %} border border-success {% endif %}">
-        <div class="card-body">
-            {% if not truncate %}
-            {% if blog_post.image %}
-                <img src="{{ blog_post.image.url }}" class="card-img-top"/>
-            {% endif %}
-            {% endif %}
-           
-            <h5 class="card-title">{{ purchase.product_name }}</h5>
-            <p class="card-text"> 
-               {{purchase_list.product_name}} 
-               <div>
-                   {{purchase_list.quantity}} वटाको 
-                   Price: रु. 
-                
-                   {{purchase_list.actual_price}}
-                   <br>
-                   
-                   एउटाको Price: रु. {{purchase.price | floatformat:2}}
-
-               </div>
-               
-                
-                 <p>Published on: {{ publish_date | date:"Y-m-d" }}</p>
-               
-               <a href="/purchases/delete/{{purchase.slug}}" class="btn btn-danger">Delete</a>
-               <a href="/purchases/edit/{{purchase.slug}}" class="btn btn-secondary">Edit</a>
-
-               
-            </p>
-          
-        </div>
-    </div>
-
-</div>
-    {% elif not publish_date %}
     <div class="col-12 col-md-10 mb-3 mx-auto">
-        <div class="card {% if not blog_post.publish_date %} border border-warning {% endif %}">
+        <div class="card {% if not blog_post.publish_date %} border border-success {% endif %}">
             <div class="card-body">
                 {% if not truncate %}
                 {% if blog_post.image %}
@@ -50,7 +12,8 @@
                
                 <h5 class="card-title">{{ purchase.product_name }}</h5>
                 <p class="card-text"> 
-                   <h4>{{purchase_list.product_name}} </h4>
+                    <h5>Purchase</h5>
+                  <h4> {{purchase_list.product_name}}    </h4> 
                    <div>
                        {{purchase_list.quantity}} वटाको 
                        Price: रु. 
@@ -61,11 +24,12 @@
                        एउटाको Price: रु. {{purchase_list.price | floatformat:2}}
     
                    </div>
-                   <p>Draft (Not Published) </p>
                    
-                  
-                   <a href="/purchases/delete/{{product_list.slug}}" class="btn btn-danger">Delete</a>
-                   <a href="/purchases/edit/{{product_list.slug}}" class="btn btn-secondary">Edit</a>
+                    
+                     <p>Published on: {{ publish_date | date:"Y-m-d" }}</p>
+                   
+                   <a href="/purchases/delete/{{purchase_list.slug}}" class="btn btn-danger">Delete</a>
+                   <a href="/purchases/edit/{{purchase_list.slug}}" class="btn btn-secondary">Edit</a>
     
                    
                 </p>
@@ -74,5 +38,44 @@
         </div>
     
     </div>
-    {% endif %}
+{% endif %}
+{% if sale.product_name %}
+    <div class="col-12 col-md-10 mb-3 mx-auto">
+        <div class="card {% if not blog_post.publish_date %} border border-success {% endif %}">
+            <div class="card-body">
+                {% if not truncate %}
+                {% if blog_post.image %}
+                    <img src="{{ blog_post.image.url }}" class="card-img-top"/>
+                {% endif %}
+                {% endif %}
+               
+                <h5 class="card-title">{{ purchase.product_name }}</h5>
+                <p class="card-text"> 
+                    <h5>Sale</h5>
+                  <h4> {{sale.product_name}}    </h4> 
+                   <div>
+                       {{sale.quantity}} वटाको 
+                       Price: रु. 
+                    
+                       {{sale.actual_price}}
+                       <br>
+                       
+                       एउटाको Price: रु. {{sale.price | floatformat:2}}
+    
+                   </div>
+                   
+                    
+                     <p>Published on: {{ publish_date | date:"Y-m-d" }}</p>
+                   
+                   <a href="/sales/delete/{{sale.slug}}" class="btn btn-danger">Delete</a>
+                   <a href="/sales/edit/{{sale.slug}}" class="btn btn-secondary">Edit</a>
+    
+                   
+                </p>
+              
+            </div>
+        </div>
+    
+    </div>
 
+{% endif %}

@@ -18,9 +18,14 @@
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
         {% endif %}
+     
         {% for purchase_list in purchases_list %}
           
-        {% include 'searches/list-inline_searches.html' with purchase_list=purchase_list  %}
+        {% include 'searches/list-inline_searches.html' with purchase_list=purchase_list publish_date=purchase_list.date %}
+          {% endfor %}
+      
+        {% for sale in sales_list %}
+            {% include 'searches/list-inline_searches.html' with sale=sale publish_date=sale.date %}
           {% endfor %}
         {% endblock %}
     </div>
