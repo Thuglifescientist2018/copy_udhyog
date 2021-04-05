@@ -43,7 +43,10 @@ class Sales(models.Model):
     slug = models.SlugField(max_length=255, blank=False,
                             null=False, unique=True)
     sold_to = models.CharField(max_length=255, blank=False, null=True)
+    pending_amount = models.DecimalField(
+        decimal_places=4, max_digits=255, blank=True, null=True)
     date = models.DateField(auto_now=False, blank=True, null=True)
+
     objects = SalesManager()
 
     def save(self, *args, **kwargs):

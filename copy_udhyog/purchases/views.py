@@ -1,7 +1,8 @@
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.http.response import Http404, HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from .forms import PurchasesModelForm
-from .models import Purchases
+from .models import Purchases, TotalAmount
 from django import forms
 # Create your views here.
 
@@ -22,28 +23,22 @@ def purchases_home(request):
 
 
 def purchases_list(request):
-    purchases = Purchases.objects.all()
-
-    def total_price():
-        price = 0
-        for purchase in purchases:
-            price += float(purchase.actual_price())
-
-        return price
-
-    more = 0
-
-    def load_and_more():
-            
-        purchases2 = purchases[:2]
-        for purchase in purchases2:
-            print(purchase.id, purchase.product_name)
-
-    load_and_more()
+    purchases_list = Purchases.objects.all().order_by("-date")
+    purchases_total = Purchases.total_price()
+    count = purchases_list.count
+    paginator = Paginator(purchases_list, 2)
+    page = request.GET.get('page')
+    try:
+        purchases = paginator.page(page)
+    except PageNotAnInteger:
+        purchases = paginator.page(1)
+    except EmptyPage:
+        purchases = paginator.page(paginator.num_pages)
 
     context = {
         "purchases": purchases,
-        "total_price": total_price(),
+        "count": count,
+        "total_price": purchases_total,
 
 
 

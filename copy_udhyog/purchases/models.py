@@ -43,6 +43,9 @@ class Purchases(models.Model):
     slug = models.SlugField(max_length=255, blank=False,
                             null=False, unique=True)
     bought_from = models.CharField(max_length=255, blank=False, null=True)
+    pending_amount = models.DecimalField(
+        decimal_places=4, max_digits=255, blank=True, null=True)
+
     date = models.DateField(auto_now=False, blank=True, null=True)
     objects = PurchasesManager()
 
@@ -53,3 +56,20 @@ class Purchases(models.Model):
     def actual_price(self, *args, **kwargs):
         actual_price = float(self.price) * float(self.quantity)
         return actual_price
+
+    def total_price():
+        price = 0
+        purchases = Purchases.objects.all()
+        for purchase in purchases:
+            price += float(purchase.actual_price())
+        total_amount = TotalAmount()
+        total_amount.total_amount = price
+        total_amount.save()
+        return price
+
+
+class TotalAmount(models.Model):
+    model = models.ForeignKey(
+        Purchases, on_delete=models.SET_NULL, null=True)
+    total_amount = models.DecimalField(
+        blank=True, null=True, decimal_places=4, max_digits=255)

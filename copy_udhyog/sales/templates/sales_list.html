@@ -5,16 +5,33 @@
 {% endblock %}
 {% block content %}
 <div id="sales_list" class="sufficient_content_height">
-<div class="container">
+<div class="container"> 
         <h1>बिक्री  गरेको सामानहरु </h1>
-        <p>जम्मा सामानहरु: {{sales.count}}</p>
+        <p>जम्मा सामानहरु: {{count}}</p>
         <p>जम्मा  मुल्य: रु. {{total_price}}</p>
 
-        <ul style="height: 500px; overflow-y: scroll">
+        <ul style="height: 700px; overflow-y: scroll">
             {% for sale in sales %}
-            {% include 'list-inline_sale.html' with sale=sale publish_date=sale.date detail=True %}
+            {% include 'list-inline_sale.html' with sale=sale publish_date=sale.date detail=True pending_amount=sale.pending_amount %}
     
             {% endfor %}
+            <div class="pagination">
+                <span class="step-links">
+                    {% if sales.has_previous %}
+                        <a class="btn btn-primary" href="?page=1">&laquo; first</a>
+                        <a class="btn btn-secondary" href="?page={{ sales.previous_page_number }}">previous</a>
+                    {% endif %}
+            
+                    <span class="current">
+                        Page {{ sales.number }} of {{ sales.paginator.num_pages }}.
+                    </span>
+            
+                    {% if sales.has_next %}
+                        <a class="btn btn-primary" href="?page={{ sales.next_page_number }}">next</a>
+                        <a class="btn btn-secondary" href="?page={{ sales.paginator.num_pages }}">last &raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
         
         </ul>
 

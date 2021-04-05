@@ -22,9 +22,20 @@
                    <br>
                    
                    एउटाको Price: रु. {{sale.price | floatformat:2}}
+                   
 
                </div>
-               
+               {% if pending_amount %}
+                        <div>
+                            <p>
+                                लिन बाँकी : 
+                                {{pending_amount | floatformat:2}}
+
+                            </p>
+
+                        </div>
+     
+                     {% endif %}
                 
                  <p>Published on: {{ publish_date | date:"Y-m-d" }}</p>
                
@@ -61,6 +72,17 @@
                        एउटाको Price: रु. {{sale.price | floatformat:2}}
     
                    </div>
+                   {% if pending_amount %}
+                        <div>
+                            <p>
+                                लिन बाँकी : 
+                                {{pending_amount | floatformat:2}}
+
+                            </p>
+
+                        </div>
+     
+                     {% endif %}
                    <p>Draft (Not Published) </p>
                    
                   

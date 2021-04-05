@@ -1,3 +1,6 @@
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+
+from django.shortcuts import render
 from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
 from .forms import SalesModelForm
@@ -20,18 +23,29 @@ def sales_home(request):
 
 def sales_list(request):
     template_name = "sales_list.html"
-    sales = Sales.objects.all()
+    sales_list = Sales.objects.all().order_by('-date')
+    count = sales_list.count
+    paginator = Paginator(sales_list, 2)
+    page = request.GET.get('page')
+    try:
+        sales = paginator.page(page)
+    except PageNotAnInteger:
+        sales = paginator.page(1)
+    except EmptyPage:
+        sales = paginator.page(paginator.num_pages)
 
     def total_price():
         price = 0
-        for sale in sales:
+        for sale in sales_list:
             price += float(sale.actual_price())
 
         return price
 
     context = {
         "sales": sales,
-        "total_price": total_price()
+        "count": count,
+        "total_price": total_price(),
+
     }
     return render(request, template_name, context)
 

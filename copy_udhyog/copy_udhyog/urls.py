@@ -26,6 +26,7 @@ urlpatterns = [
     path('sales/', include('sales.urls')),
     path('api/', include('api.urls')),
     path('search/', search_view),
+    path('unicorn/', include('django_unicorn.urls')),
     path('admin/', admin.site.urls),
 ]
 

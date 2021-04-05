@@ -1,24 +1,42 @@
 {% extends 'base.html' %}
 
+
 {% block head %}
 <title> किनेको सामान्को  जानकारी हेर्नुहोश </title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
 {% endblock %}
 {% block content %}
 <div id="purchases_list" class="sufficient_content_height">
 <div class="container">
         <h1>खरिद गरेको सामानहरु </h1>
-        <p>जम्मा सामानहरु: {{purchases.count}}</p>
+        <p>जम्मा सामानहरु: {{count}}</p>
         <p>जम्मा  मुल्य: रु. {{total_price}}</p>
 
         <ul id="purchase_list_container" style="height: 44rem; overflow-y: scroll">
             {% for purchase in purchases %}
-            {% include 'list_inline_purchase.html' with purchase=purchase detail=True publish_date=purchase.date %}
+            {% include 'list_inline_purchase.html' with purchase=purchase detail=True publish_date=purchase.date pending_amount=purchase.pending_amount %}
     
             {% endfor %}
-        
+            <div class="pagination">
+                <span class="step-links">
+                    {% if purchases.has_previous %}
+                        <a class="btn btn-primary" href="?page=1">&laquo; first</a>
+                        <a class="btn btn-secondary" href="?page={{ purchases.previous_page_number }}">previous</a>
+                    {% endif %}
+            
+                    <span class="current">
+                        Page {{ purchases.number }} of {{ purchases.paginator.num_pages }}.
+                    </span>
+            
+                    {% if purchases.has_next %}
+                        <a class="btn btn-primary" href="?page={{ purchases.next_page_number }}">next</a>
+                        <a class="btn btn-secondary" href="?page={{ purchases.paginator.num_pages }}">last &raquo;</a>
+                    {% endif %}
         </ul>
-
+        
     </div>
+
 
 </div>
 
@@ -26,5 +44,19 @@
 {% endblock %}
 {% block scripts %}
 {% load static %}
-<script src="{% static 'js/optimizelist.js' %} "></script>
+<script src="{% static 'js/jquery.waypoint.min.js' %} "></script>
+<script src="{% static 'js/infinite.min.js' %} "></script>
+
+<script>
+    var infinite = new Waypoint.Infintie({
+        element: $('.infinite-container')[0],
+        offset: 'bottom-in-view',
+        onBeforePageLoad: function () {
+
+        },
+        onAfterPageLoad: function () {
+
+        }
+    })
+</script>
 {% endblock %}

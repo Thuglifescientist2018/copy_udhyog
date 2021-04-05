@@ -2,7 +2,7 @@
 
 
 {% if publish_date %}
-<div class="col-12 col-md-10 mb-3 mx-auto">
+<div class="col-12 col-md-10 mb-3 mx-auto infinite-item">
     <div class="card {% if not blog_post.publish_date %} border border-success {% endif %}">
         <div class="card-body">
             {% if not truncate %}
@@ -20,14 +20,24 @@
                 
                    {{purchase.actual_price}}
                    <br>
-                   
+                 
                    एउटाको Price: रु. {{purchase.price | floatformat:2}}
-
-               </div>
-               
+                   
+                </div>
                 
-                 <p>Published on: {{ publish_date | date:"Y-m-d" }}</p>
-               
+                
+                <p>Published on: {{ publish_date | date:"Y-m-d" }}</p>
+                {% if pending_amount %}
+                        <div>
+                            <p>
+                                दिन बाँकी : 
+                                {{pending_amount | floatformat:2}}
+
+                            </p>
+
+                        </div>
+     
+                     {% endif %}
                <a href="/purchases/delete/{{purchase.slug}}" class="btn btn-danger">Delete</a>
                <a href="/purchases/edit/{{purchase.slug}}" class="btn btn-secondary">Edit</a>
 
@@ -60,9 +70,25 @@
                        <br>
                        
                        एउटाको Price: रु. {{purchase.price | floatformat:2}}
-    
-                   </div>
-                   <p>Draft (Not Published) </p>
+                       hello
+                       
+                    </div>
+                    
+                   
+                          {% if pending_amount %}
+                        <div>
+                            <p>
+                                दिन बाँकी : 
+                                {{pending_amount | floatformat:2}}
+
+                            </p>
+
+                        </div>
+     
+                     {% endif %}
+
+                   
+                    <p>Draft (Not Published) </p>
                    
                   
                    <a href="/purchases/delete/{{purchase.slug}}" class="btn btn-danger">Delete</a>
