@@ -26,7 +26,7 @@ def apiOverview(request):
 def purchaseList(request):
     purchases = Purchases.objects.all()
     serializer = PurchasesSerializer(purchases, many=True)
-
+    to
     return Response(serializer.data)
 
 
