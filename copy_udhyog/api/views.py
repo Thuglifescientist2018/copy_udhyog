@@ -5,7 +5,8 @@ from django.http import JsonResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import PurchasesSerializer, SalesSerializer
-from purchases.models import Purchases
+from purchases.models import Purchases, TotalAmount
+
 from sales.models import Sales
 
 
@@ -26,8 +27,10 @@ def apiOverview(request):
 def purchaseList(request):
     purchases = Purchases.objects.all()
     serializer = PurchasesSerializer(purchases, many=True)
-    to
-    return Response(serializer.data)
+    total_amount = TotalAmount.objects.all().last()
+    total_amount = total_amount.total_amount
+    purchases_item_count = purchases.count()
+    return Response([{"total": str(total_amount), "count": purchases_item_count}, serializer.data])
 
 
 @api_view(['GET'])
