@@ -3,6 +3,10 @@ import {Navbar, Nav, Form, FormControl, Button} from  'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 function Navbarmenu() {
+    const formSubmit = (e) => {
+        console.log(e.target.value);
+        e.preventDefault();
+    }    
     return (
         <Navbar bg="light" expand="lg">
           <Navbar.Brand href="#home">आरती कपि उध्योग</Navbar.Brand>
@@ -21,8 +25,8 @@ function Navbarmenu() {
               </Nav.Link>
               
             </Nav>
-            <Form inline>
-              <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+            <Form inline id="searchform" method="POST" enctype="multipart/form-data" action="/api/search/">
+              <FormControl type="text" name="q"  placeholder="Search" className="mr-sm-2" />
               <Button variant="outline-success">Search</Button>
             </Form>
         </Navbar.Collapse>

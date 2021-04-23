@@ -16,7 +16,7 @@ function App() {
              
                <Switch>
 
-               <Switch>
+               
                 <Route exact path="/">
                   <Home/>
                 </Route>
@@ -26,8 +26,10 @@ function App() {
                 <Route path="/sales">
                   <Sales/>
                 </Route>
+
+                
                 </Switch>
-               </Switch>
+               
            
             
             </Main>

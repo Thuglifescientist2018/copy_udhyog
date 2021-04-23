@@ -1,12 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import {Card, Button} from 'react-bootstrap';
 import styled from 'styled-components';
 import {Route, Link, Switch, BrowserRouter as Router} from 'react-router-dom';
-
 import Products from './Products';
-import PurchaseAdd from './PurchaseAdd';
-
-
+import SalesAdd from './SalesAdd';
 
 function PurchaseList() {
     const [products, setProducts] = useState(null);
@@ -15,7 +11,7 @@ function PurchaseList() {
     const [loading, setLoading] = useState(true);
     useEffect(() => {
         const getProducts = async() => {
-            const response = await fetch('/api/purchase-list');
+            const response = await fetch('/api/sales-list/');
             const data = await response.json();
             setProducts(data[1]);
             setTotalprice(data[0].total);
@@ -36,23 +32,24 @@ function PurchaseList() {
                 </ul>
                 <ul class="m-5">
                     <li>
-                        <Link to="/purchase-add">
-                            Purchase Add
+                        <Link to="/sales">
+                        Sales List
                         </Link>
                     </li>
                     <li>
-                        <Link to="/purchases">
-                            Purchase List
+                        <Link to="/sales-add">
+                        Add Sales
                         </Link>
-                    </li>
+                        
+                        </li>
                 </ul>
             </Menu>
              <Switch>
-                 <Route  path="/purchases">
+                 <Route  path="/sales">
                  <Products products={products}/>
                  </Route>
-                 <Route path="/purchase-add">
-                     <PurchaseAdd/>
+                 <Route path="/sales-add">
+                     <SalesAdd/>
                  </Route>
              </Switch>
 
@@ -68,13 +65,9 @@ const Container = styled.section`
 display: grid;
 grid-template-columns: 30% auto;
 `
-
 const Menu = styled.section`
         border: 3px solid gray;
         min-height: 88vh;
         border-radius: 20px;
         margin: 10px;
 `
-
-
-

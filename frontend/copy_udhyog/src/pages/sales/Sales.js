@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import SalesList from './SalesList';
 
 function Sales() {
     return (
         <div>
-            <img src="https://source.unsplash.com/zVdAkU4s9lI/1600x900"></img>
+            <SalesList/>
         </div>
     )
 }

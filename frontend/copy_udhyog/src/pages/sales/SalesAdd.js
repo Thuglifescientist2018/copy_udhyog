@@ -13,8 +13,8 @@ function PurchaseAdd() {
   </Form.Group>
 
   <Form.Group controlId="kinekoprice">
-    <Form.Label>किनेको मुल्य (१ को):</Form.Label>
-    <Form.Control type="number" placeholder="किनेको मुल्य (१ को)" />
+    <Form.Label>बेचेको  मुल्य (१ को):</Form.Label>
+    <Form.Control type="number" placeholder="बेचेको  मुल्य (१ को)" />
   </Form.Group>
   <Form.Group controlId="katiwata">
     <Form.Label>कती वटा :
@@ -23,14 +23,14 @@ function PurchaseAdd() {
 " />
   </Form.Group>
   <Form.Group controlId="kinekoprice">
-    <Form.Label>कताबाट किनेको ?:</Form.Label>
-    <Form.Control type="text" placeholder="कताबाट किनेको ?" />
+    <Form.Label>कता बेचेको  ?:</Form.Label>
+    <Form.Control type="text" placeholder="कताबाट बेचेको  ?" />
   </Form.Group>
  
   <Form.Group controlId="dinabaaki">
     <Form.Label>दिन बाँकी :
 </Form.Label>
-    <Form.Control type="number" placeholder="तपाईंले उता कती पैसा दिन बाँकी छ ? छैन भने खाली छोड् दिनु होश 
+    <Form.Control type="number" placeholder="तपाईंले  कती पैसा लिन बाँकी छ ? छैन भने खाली छोड् दिनु होश 
 " />
   </Form.Group>
  
