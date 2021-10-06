@@ -57,3 +57,20 @@ class Sales(models.Model):
     def actual_price(self, *args, **kwargs):
         actual_price = float(self.price) * float(self.quantity)
         return actual_price
+
+    def total_price():
+        price = 0
+        sales = Sales.objects.all()
+        for sale in sales:
+            price += float(sale.actual_price())
+        total_amount = TotalAmount()
+        total_amount.total_amount = price
+        total_amount.save()
+        return price
+
+
+class TotalAmount(models.Model):
+    model = models.ForeignKey(
+        Sales, on_delete=models.SET_NULL, null=True)
+    total_amount = models.DecimalField(
+        blank=True, null=True, decimal_places=4, max_digits=255)

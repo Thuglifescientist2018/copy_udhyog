@@ -7,7 +7,7 @@ class PurchasesModelForm(forms.ModelForm):
         model = Purchases
         labels = {
             'product_name': 'सामान को नाम',
-            'price': 'किनेको मुल्य',
+            'price': 'किनेको मुल्य (१ को)',
             'quantity': 'कती वटा ',
             'bought_from': 'कताबाट किनेको ?',
             'pending_amount': 'दिन बाँकी ',

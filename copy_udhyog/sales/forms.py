@@ -7,7 +7,7 @@ class SalesModelForm(forms.ModelForm):
         model = Sales
         labels = {
             'product_name': 'सामान को नाम',
-            'price': 'बेचेको दाम',
+            'price': 'बेचेको दाम(१ को)',
             'quantity': 'कती वटा?',
             'sold_to': 'कता बेचेको?',
             'pending_amount': 'लिन बाँकी',
